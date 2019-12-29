@@ -69,7 +69,7 @@ def main():
 	leds = ['-', '-', '-', '-', '-', '-', '-', '-']
 
 	while True:
-		if ledStaus:
+		if Led_status:
 			# Turn LED on from left to right
 			print ("From left to right.")
 			for pin in LedPins:
