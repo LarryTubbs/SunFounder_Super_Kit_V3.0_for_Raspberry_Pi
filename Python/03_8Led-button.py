@@ -14,7 +14,7 @@ BtnPin = 5
 LedPins = [17, 18, 27, 22, 23, 24, 25, 4]
 
 # Set Led status to True(OFF)
-Led_status = True
+Led_status = False
 
 # Define a function to print message at the beginning
 def print_message():
