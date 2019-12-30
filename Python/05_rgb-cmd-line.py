@@ -78,8 +78,8 @@ def setColor(color):
 def main():
 	print_message()
 	for (i, value) in enumerate(sys.argv):
-        if i > 0:
-            x = int(value, 16)
+    	if i > 0:
+    		x = int(value, 16)
 			COLOR.append(x)
 	while True:
 		for color in COLOR:
