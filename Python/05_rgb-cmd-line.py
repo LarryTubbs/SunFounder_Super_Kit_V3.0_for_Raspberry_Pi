@@ -2,7 +2,8 @@
 
 import RPi.GPIO as GPIO
 import time
-from sys import version_info, argv
+from sys import version_info
+import sys
 
 if version_info.major == 3:
 	raw_input = input
@@ -78,13 +79,13 @@ def setColor(color):
 def main():
 	print_message()
 	for (i, value) in enumerate(sys.argv):
-    	if i > 0:
-    		x = int(value, 16)
-			COLOR.append(x)
+            if i > 0:
+                x = int(value, 16)
+                COLOR.append(x)
 	while True:
-		for color in COLOR:
-			setColor(color)
-			time.sleep(0.5)
+            for color in COLOR:
+                    setColor(color)
+                    time.sleep(1)
 
 def destroy():
 	# Stop all pwm channel

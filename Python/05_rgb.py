@@ -80,7 +80,7 @@ def main():
 	while True:
 		for color in COLOR:
 			setColor(color)
-			time.sleep(0.5)
+			time.sleep(1)
 
 def destroy():
 	# Stop all pwm channel

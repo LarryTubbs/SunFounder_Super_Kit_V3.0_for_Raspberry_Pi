@@ -9,7 +9,7 @@ if version_info.major == 3:
 
 
 # Set #18 as LED pin
-LedPin = 18
+LedPin = 4
 
 def print_message():
 	print ("========================================")
