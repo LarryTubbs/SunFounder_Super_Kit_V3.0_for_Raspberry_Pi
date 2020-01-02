@@ -3,7 +3,7 @@
 import RPi.GPIO as GPIO
 import time
 from sys import version_info
-from . import morsecode as morse
+import morsecode as morse
 
 if version_info.major == 3:
 	raw_input = input
@@ -43,14 +43,16 @@ def dit():
 def dah():
 	print ("-", end="")
 	GPIO.output(BeepPin, GPIO.LOW)
-	time.sleep(0.1)
+	time.sleep(0.2)
 	GPIO.output(BeepPin, GPIO.HIGH)
-	time.sleep(0.1)
+	time.sleep(0.2)
 
 def main():
 	print_message()
 	while True:
+		print('')
 		msg = input("Enter message to send via morse code: ")
+		msg = morse.translate(msg)
 		for c in msg.upper():
 			if c == ".":
 				dit()
@@ -58,6 +60,7 @@ def main():
 				dah()
 			elif c == " ":
 				print(c, end='')
+				time.sleep(0.5)
 
 def destroy():
 	# Turn off buzzer

@@ -38,11 +38,11 @@ def main():
 		# Buzzer on (Beep)
 		print ("Buzzer On")
 		GPIO.output(BeepPin, GPIO.LOW)
-		time.sleep(0.1)
+		time.sleep(0.2)
 		# Buzzer off
 		print ("Buzzer Off")
 		GPIO.output(BeepPin, GPIO.HIGH)
-		time.sleep(0.1)
+		time.sleep(0.2)
 
 def destroy():
 	# Turn off buzzer
