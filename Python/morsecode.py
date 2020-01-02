@@ -43,9 +43,11 @@ def translate(input):
     morse_out = ""
     for l in input.upper():
         try:
-            if input != ' ':
+            if l != ' ':
                 morse_out += translation_table[l]
-                morse_out += " "
+                morse_out += "|"
+            elif l == ' ':
+                morse_out += ' '
         except Exception as e:
             pass
     return morse_out

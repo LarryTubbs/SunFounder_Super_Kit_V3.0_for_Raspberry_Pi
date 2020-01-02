@@ -11,6 +11,7 @@ if version_info.major == 3:
 
 # Set #17 as buzzer pin
 BeepPin = 17
+DitDuration = 0.1
 
 def print_message():
 	print ("========================================")
@@ -36,16 +37,16 @@ def setup():
 def dit():
 	print (".", end="")
 	GPIO.output(BeepPin, GPIO.LOW)
-	time.sleep(0.1)
+	time.sleep(DitDuration)
 	GPIO.output(BeepPin, GPIO.HIGH)
-	time.sleep(0.1)
+	time.sleep(DitDuration)
 	
 def dah():
 	print ("-", end="")
 	GPIO.output(BeepPin, GPIO.LOW)
-	time.sleep(0.2)
+	time.sleep(DitDuration * 3)
 	GPIO.output(BeepPin, GPIO.HIGH)
-	time.sleep(0.2)
+	time.sleep(DitDuration)
 
 def main():
 	print_message()
@@ -60,7 +61,9 @@ def main():
 				dah()
 			elif c == " ":
 				print(c, end='')
-				time.sleep(0.5)
+				time.sleep(DitDuration * 4)
+			elif c == '|':
+				time.sleep(DitDuration * 2)
 
 def destroy():
 	# Turn off buzzer
