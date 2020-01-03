@@ -48,7 +48,7 @@ def translate(input):
                 morse_out += "|"
             elif l == ' ':
                 morse_out += ' '
-        except Exception as e:
+        except Exception:
             pass
     return morse_out
 
