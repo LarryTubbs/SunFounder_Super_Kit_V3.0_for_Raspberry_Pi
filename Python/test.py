@@ -1,5 +1,7 @@
+#!/usr/bin/env python3
+
 import morsecode as morse
 
-msg = input("Enter a message to translate into morse code:")
+msg = input("Enter a message to translate into morse code: ")
 morse_msg = morse.translate(msg)
 print(morse_msg)
