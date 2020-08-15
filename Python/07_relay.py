@@ -37,7 +37,7 @@ def setup():
 	GPIO.setmode(GPIO.BCM)
 	# Set relayPin's mode to output, 
 	# and initial level to High(3.3v)
-	GPIO.setup(relayPin, GPIO.OUT, initial=GPIO.HIGH)
+	GPIO.setup(relayPin, GPIO.OUT, initial=GPIO.LOW)
 
 # Define a main function for main process
 def main():
@@ -46,11 +46,11 @@ def main():
 	while True:
 		print ("...Relay close")
 		# Tick
-		GPIO.output(relayPin, GPIO.LOW)
+		GPIO.output(relayPin, GPIO.HIGH)
 		time.sleep(1)
 		print ("Relay open...")
 		# Tock
-		GPIO.output(relayPin, GPIO.HIGH) 
+		GPIO.output(relayPin, GPIO.LOW) 
 		time.sleep(1)
 
 # Define a destroy function for clean up everything after
