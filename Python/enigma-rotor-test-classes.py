@@ -1,5 +1,7 @@
 import threading
 import time
+import sys
+
 import RPi.GPIO as GPIO
 
 from enigma.machine import Machine
@@ -19,6 +21,8 @@ class Rotary(threading.Thread):
 
     def run(self):
         global m3
+        global stopAllThreads
+
         print(m3)
 
         while True:
@@ -39,9 +43,15 @@ class Rotary(threading.Thread):
                 if (Last_RoB_Status == 1) and (Current_RoB_Status == 0):
                     m3.r.rotateDown()
                 print (m3)
-
+            if stopAllThreads == True:
+                return
+            time.sleep(0.01)
+    
 def main():
     global m3
+    global stopAllThreads
+
+    stopAllThreads = False
     
     m3 = Machine("M3", "B", "III", "II", "I", [("A", "B"), ("C", "D")])
     rotary = Rotary(17, 18)
@@ -49,8 +59,10 @@ def main():
         name = input('Enter "Q" to quit.')
 
         if name.upper() == ('Q'):
+            stopAllThreads = True
+            rotary.join() 
             destroy()
-            quit()
+            sys.exit()
 
 
 def destroy():
