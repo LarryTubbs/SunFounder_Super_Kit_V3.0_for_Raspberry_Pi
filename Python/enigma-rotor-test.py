@@ -18,11 +18,9 @@ RoBPin = 18
 RoSPin = 27
 
 def print_message():
-	global m3
 	print ("Program is running...")
 	print ("Please press Ctrl+C to end the program...")
 	raw_input ("Press Enter to begin\n")
-	print(m3)
 	
 
 def setup():
