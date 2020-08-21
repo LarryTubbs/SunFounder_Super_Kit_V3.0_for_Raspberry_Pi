@@ -74,7 +74,7 @@ def main():
         try:
             i = int(iStr)
             sendNumToDisplay(i)
-        except ValueError as e:
+        except ValueError:
             print("'" + iStr + "' isn't a whole number from 0-99.  Please try again.")
 
 def destroy():
