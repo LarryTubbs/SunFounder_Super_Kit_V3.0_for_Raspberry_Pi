@@ -8,9 +8,9 @@ if version_info.major == 3:
 	raw_input = input
 
 # Set up pins
-SDI   = 17
-RCLK  = 18
-SRCLK = 27
+SDI   = 23
+RCLK  = 24
+SRCLK = 25
 
 # Define a segment code from 0 to F in Hexadecimal
 # Commen cathode
@@ -22,9 +22,9 @@ def print_msg():
 	print ("========================================")
 	print ("|         Segment with 74HC595         |")
 	print ("|    ------------------------------    |")
-	print ("|         SDI connect to GPIO17        |")
-	print ("|         RCLK connect to GPIO18       |")
-	print ("|        SRCLK connect to GPIO27       |")
+	print ("|         SDI connect to GPIO23        |")
+	print ("|         RCLK connect to GPIO24       |")
+	print ("|        SRCLK connect to GPIO25       |")
 	print ("|                                      |")
 	print ("|     Control segment with 74HC595     |")
 	print ("|                                      |")
