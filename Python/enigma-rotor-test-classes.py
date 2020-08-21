@@ -48,7 +48,7 @@ class Rotary(threading.Thread):
                 print (m3)
             if stopAllThreads == True:
                 return
-            time.sleep(0.01)
+            time.sleep(0.005)
 
 class Display():
     def __init__(self, SDI, RCLK, SRCLK):
@@ -84,6 +84,10 @@ class Display():
             self.hc595_shift(0x79)
             raise ValueError('Not a whole number between 0-99')
     
+    def clear(self):
+        self.hc595_shift(0x0)
+        self.hc595_shift(0x0)
+    
 def main():
     global m3
     global stopAllThreads
@@ -100,6 +104,7 @@ def main():
         if name.upper() == ('Q'):
             stopAllThreads = True
             rotary.join() 
+            display.clear()
             destroy()
             sys.exit()
 
