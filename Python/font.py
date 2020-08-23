@@ -3,7 +3,7 @@
 segmentMap1 = {'H':0b1, 'J':0b10, 'K':0b100, 'G1':0b1000, 'A':0b10000, 'B':0b100000}
 segmentMap2 = {'F':0b1, 'E':0b10, 'L':0b100, 'M':0b1000, 'N':0b10000, 'G2': 0b100000, 'D':0b1000000, 'C': 0b10000000}
 
-# a defination of the font for the alpha-numeric display using the wiring map above
+# a definition of the font for the alpha-numeric display using the wiring map above
 # letters
 vocabulary = {}
 vocabulary['A'] = ( segmentMap1['A'] | segmentMap1['B'] | segmentMap1['G1'], segmentMap2['E'] | segmentMap2['F'] | segmentMap2['C'] | segmentMap2['G2'] )
