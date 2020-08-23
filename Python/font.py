@@ -5,7 +5,8 @@ segmentMap2 = {'F':0b1, 'E':0b10, 'L':0b100, 'M':0b1000, 'N':0b10000, 'G2': 0b10
 
 # a defination of the font for the alpha-numeric display using the wiring map above
 # letters
-vocabulary = {'A': (segmentMap1['A'] | segmentMap1['B'] | segmentMap1['G1'], segmentMap2['E'] | segmentMap2['F'] | segmentMap2['C'] | segmentMap2['G2'] )}
+vocabulary = {}
+vocabulary['A'] = ( segmentMap1['A'] | segmentMap1['B'] | segmentMap1['G1'], segmentMap2['E'] | segmentMap2['F'] | segmentMap2['C'] | segmentMap2['G2'] )
 vocabulary['B'] = ( segmentMap1['A'] | segmentMap1['B'] | segmentMap1['J'] , segmentMap2['C'] | segmentMap2['D'] | segmentMap2['M'] | segmentMap2['G2'] )
 vocabulary['C'] = ( segmentMap1['A'] , segmentMap2['E'] | segmentMap2['D'] | segmentMap2['F'] )
 vocabulary['D'] = ( segmentMap1['A'] | segmentMap1['B'] | segmentMap1['J'] , segmentMap2['C'] | segmentMap2['D'] | segmentMap2['M'] )
@@ -15,8 +16,8 @@ vocabulary['G'] = ( segmentMap1['A'] , segmentMap2['E'] | segmentMap2['D'] | seg
 vocabulary['H'] = ( segmentMap1['B'] | segmentMap1['G1'], segmentMap2['E'] | segmentMap2['F'] | segmentMap2['C'] | segmentMap2['G2'] )
 vocabulary['I'] = ( segmentMap1['A'] | segmentMap1['J'], segmentMap2['D'] | segmentMap2['M'] )
 vocabulary['J'] = ( segmentMap1['B'] , segmentMap2['C'] | segmentMap2['D'] )
-# vocabulary['K'] = ( segmentMap1['G1'] | segmentMap1['K'] , segmentMap2['F'] | segmentMap2['E'] | segmentMap2['N'] )
-vocabulary['K'] = ( segmentMap1['J'] | segmentMap1['K'] , segmentMap2['M'] | segmentMap2['N'] )
+vocabulary['K'] = ( segmentMap1['G1'] | segmentMap1['K'] , segmentMap2['F'] | segmentMap2['E'] | segmentMap2['N'] )
+# vocabulary['K'] = ( segmentMap1['J'] | segmentMap1['K'] , segmentMap2['M'] | segmentMap2['N'] )
 vocabulary['L'] = ( 0, segmentMap2['E'] | segmentMap2['D'] | segmentMap2['F'] )
 vocabulary['M'] = ( segmentMap1['H'] | segmentMap1['K'] | segmentMap1['B'] , segmentMap2['F'] | segmentMap2['C'] | segmentMap2['E'] )
 vocabulary['N'] = ( segmentMap1['H'] | segmentMap1['B'] , segmentMap2['F'] | segmentMap2['C'] | segmentMap2['E'] | segmentMap2['N'])
