@@ -1,6 +1,7 @@
 import time
 
 import RPi.GPIO as GPIO
+import font
 
 GPIO.setmode(GPIO.BCM)
 
@@ -16,9 +17,7 @@ class Display():
         self.SRCLK = SRCLK
         self.LCO = LCO
         self.RCO = RCO
-        self.segmentMap1 = {'F':0b1, 'E':0b10, 'L':0b100, 'M':0b1000, 'N':0b10000, 'G2': 0b100000, 'D':0b1000000, 'C': 0b10000000}
-        self.segmentMap2 = {'H':0b1, 'J':0b10, 'K':0b100, 'G1':0b1000, 'A':0b10000, 'B':0b100000}
-    
+        
     def hc595_shift(self, dat):
         for bit in range(0, 8):	
             GPIO.output(self.SDI, 0x80 & (dat << bit)) # send one bit at a time
@@ -29,7 +28,7 @@ class Display():
         time.sleep(0.001)
         GPIO.output(self.RCLK, GPIO.LOW) # low part of the hi-low pair.  Results in the value being displayed on the segment display
 
-    def show(self):
+    def show(self, c):
         # if i in range(0, 100):
         #     if i <= 9:
         #         self.hc595_shift(self.numCode[i])
@@ -42,18 +41,33 @@ class Display():
         #     self.hc595_shift(0x79)
         #     self.hc595_shift(0x79)
         #     raise ValueError('Not a whole number between 0-99')
-        self.hc595_shift(0b1000000)
-        self.hc595_shift(0b0)
+        self.hc595_shift(font.vocabulary[c][0])
+        self.hc595_shift(font.vocabulary[c][1])
         GPIO.output(self.RCO, GPIO.LOW) # closes circuit, access to ground for the right digit
-        GPIO.output(self.LCO, GPIO.LOW)
+        # GPIO.output(self.LCO, GPIO.LOW)
     
     def clear(self):
         # self.hc595_shift(0x0)
         # self.hc595_shift(0x0)
         GPIO.output(self.RCO, GPIO.HIGH) # breaks circuit, no ground for the right digit.
-        GPIO.output(self.LCO, GPIO.HIGH)
+        # GPIO.output(self.LCO, GPIO.HIGH)
 
-d = Display(23, 24, 25, 4, 5)
-d.show()
-s = input("Press 'enter' key to end.")
-GPIO.cleanup()
+def destroy():
+	GPIO.cleanup()
+
+def main():
+    d = Display(23, 24, 25, 4, 5)
+    while True:
+        s = input("Please type a letter to display and press 'enter: ")
+        try:
+            d.show(s.upper())
+        except:
+            print("I don't know how to display '" + s + "'.  Please try another letter.")
+    
+
+if __name__ == '__main__':
+	try:
+		main()
+	except KeyboardInterrupt:
+		destroy()
+    
