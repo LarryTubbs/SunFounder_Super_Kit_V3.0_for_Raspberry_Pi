@@ -54,6 +54,7 @@ class Rotary(threading.Thread):
             time.sleep(0.005)
 
 # class Display():
+### For numeric displays (pair of 7 segments - refactored out to 14 segment alpha-numerics)
 #     def __init__(self, SDI, RCLK, SRCLK):
 #         GPIO.setup(SDI, GPIO.OUT, initial=GPIO.LOW)
 #         GPIO.setup(RCLK, GPIO.OUT, initial=GPIO.LOW)
