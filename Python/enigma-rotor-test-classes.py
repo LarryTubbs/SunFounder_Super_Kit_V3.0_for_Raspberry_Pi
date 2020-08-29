@@ -199,7 +199,7 @@ def main(lb):
             display.show(enigma.globe.plaintext[m3.r.position])
             lb.show(cypherText)
             print(cypherText)
-            time.sleep(0.5)
+            time.sleep(3)
         lb.clear()
         print(m3)
 
@@ -208,7 +208,7 @@ def destroy(lb=None):
     # clear the lampboard
     if lb is not None:
         lb.clear()
-        
+
     # Release resource
     GPIO.cleanup()  
 
