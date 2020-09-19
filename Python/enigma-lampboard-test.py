@@ -23,6 +23,7 @@ class Lampboard():
         self.hc595_shift(self.segmentMap3['0'])
         self.hc595_shift(self.segmentMap2['0'])
         self.hc595_shift(self.segmentMap1['0'])
+        self.latch()
     
     def hc595_shift(self, dat):
         for bit in range(0, 8):	
@@ -30,9 +31,13 @@ class Lampboard():
             GPIO.output(self.SRCLK, GPIO.HIGH) # high part of hi-low pair to signal the IC to store current bit to shift register
             time.sleep(0.001)
             GPIO.output(self.SRCLK, GPIO.LOW) # low part of hi-low pair to signal the IC to store current bit to shift register
+            # self.latch()
+        
+    def latch(self):
         GPIO.output(self.RCLK, GPIO.HIGH) # high part of hi-low pair to signal the IC to shift the data from the shift register to the data register
         time.sleep(0.001)
         GPIO.output(self.RCLK, GPIO.LOW) # low part of the hi-low pair.  Results in the value being displayed on the segment display
+
 
     def show(self, c):
         c = c.upper()
@@ -52,6 +57,7 @@ class Lampboard():
             self.hc595_shift(self.segmentMap1[c])
         else:
             self.hc595_shift(self.segmentMap1['0'])
+        self.latch()
         
 def destroy(lampboard=None):
     if lampboard is not None:
